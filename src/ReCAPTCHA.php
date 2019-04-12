@@ -15,7 +15,7 @@ namespace AdairCreative {
 
 			if (!$app) throw "ReCAPTCHA app key has not been defined";
 
-			$fieldList->add(TextField::create("CaptchaToken", "")->setAttribute("data-key", $app));
+			$fieldList->add(TextField::create("CaptchaToken", "")->setAttribute('required', 'true')->setAttribute("data-key", $app));
 		}
 
 		public static function importJavascript() {
