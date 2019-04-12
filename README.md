@@ -8,7 +8,6 @@ Allows for easy and quick implementation of the Google ReCAPTCHA v2.0
 
 ```
 composer require adair-creative/recaptcha
-composer vendor-expose
 ```
 
 ## Guide
