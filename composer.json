@@ -1,0 +1,16 @@
+{
+	"name": "adair-creative/recaptcha",
+	"description": "Tools for quick Google ReCAPTCHA implementation",
+	"authors": [
+		{
+			"name": "Jesse Solomon",
+			"email": "jesse@adaircreative.com"
+		}
+	],
+	"extra": {
+		"resources-dir": "_resources",
+		"expose": [
+			"dist/"
+		]
+	}
+}
