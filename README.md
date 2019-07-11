@@ -13,14 +13,14 @@ composer require adair-creative/recaptcha
 ## Guide
 
 config.yml
-```
+```yml
 AdairCreative\ReCAPTCHA:
-	secret_key: [your-secret-key]
-	app_key: [your-public-app-key]
+    secret_key: [your-secret-key]
+    app_key: [your-public-app-key]
 ```
 
 PageController.php
-```
+```php
 protected function init() {
 	...
 	ReCAPTCHA::importJavascript();
@@ -30,7 +30,7 @@ protected function init() {
 ```
 
 YourForm.php
-```
+```php
 public function __construct(ContentController $controller, string $name) {
 	$fields = new FieldList([
 		TextField::create("Message", "")
