@@ -13,7 +13,7 @@ if (forms.length > 0) {
 	forms.each(function(index, form) {
 		var captcha = $("<div class=\"g-recaptcha\" data-callback=\"captchaCallback\" data-sitekey=\"" + $(form).find("input[name=\"CaptchaToken\"]").first().data("key") + "\"></div>");
 
-		captcha.insertBefore($(form).find("input[name=\"CaptchaToken\"]").first());
+		captcha.insertAfter($(form).find("input[name=\"CaptchaToken\"]").first());
 	});
 
 	var script = document.createElement("script");
