@@ -5,7 +5,7 @@ function captchaCallback(token) {
 	$("form input[name=\"CaptchaToken\"]").val(token);
 }
 
-var forms = $("form fieldset").filter(function () {
+var forms = $("form").filter(function () {
 	return $(this).find("input[name=\"CaptchaToken\"]").length > 0;
 });
 
