@@ -19,11 +19,11 @@ namespace AdairCreative {
 		}
 
 		public static function importJavascript() {
-			Requirements::javascript("/resources/vendor/adair-creative/recaptcha/dist/ReCAPTCHA.js");
+			Requirements::javascript("/_resources/vendor/adair-creative/recaptcha/dist/ReCAPTCHA.js");
 		}
 
 		public static function importCSS() {
-			Requirements::css("/resources/vendor/adair-creative/recaptcha/dist/ReCAPTCHA.css");
+			Requirements::css("/_resources/vendor/adair-creative/recaptcha/dist/ReCAPTCHA.css");
 		}
 
 		/**
