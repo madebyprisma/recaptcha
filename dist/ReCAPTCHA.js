@@ -1,22 +1,20 @@
-/**
- * @param {string} token
- */
-function captchaCallback(token) {
-	$("form input[name=\"CaptchaToken\"]").val(token);
-}
+globalThis.captchaCallback = () => undefined;
 
-var forms = $("form").filter(function () {
-	return $(this).find("input[name=\"CaptchaToken\"]").length > 0;
-});
+let form = Array.from(document.querySelectorAll("form")).filter(form => !!form.querySelector(`input[name="CaptchaToken"]`))[0];
 
-if (forms.length > 0) {
-	forms.each(function(index, form) {
-		var captcha = $("<div class=\"g-recaptcha\" data-callback=\"captchaCallback\" data-sitekey=\"" + $(form).find("input[name=\"CaptchaToken\"]").first().data("key") + "\"></div>");
+if (form) {
+	let input = form.querySelector(`input[name="CaptchaToken"]`);
 
-		captcha.insertAfter($(form).find("input[name=\"CaptchaToken\"]").first());
-	});
+	let captcha = document.createElement("div");
+	captcha.className = "g-recaptcha";
+	captcha.dataset.callback = "captchaCallback";
+	captcha.dataset.sitekey = input.dataset.sitekey;
 
-	var script = document.createElement("script");
+	input.after(captcha);
+
+	globalThis.captchaCallback = token => input.value = token;
+
+	let script = document.createElement("script");
 	script.src = "https://www.google.com/recaptcha/api.js";
 	document.body.appendChild(script);
 }
