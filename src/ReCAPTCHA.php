@@ -19,8 +19,7 @@ namespace AdairCreative {
 		}
 
 		/**
-		 * @depricated
-		 * Use `ReCAPTCHA::field()` instead
+		 * @deprecated Use `ReCAPTCHA::field()` instead
 		 */
 		public static function addField(FieldList &$fieldList) {
 			$fieldList->add(ReCAPTCHA::field());
