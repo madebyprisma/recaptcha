@@ -8,7 +8,7 @@ if (form) {
 	let captcha = document.createElement("div");
 	captcha.className = "g-recaptcha";
 	captcha.dataset.callback = "captchaCallback";
-	captcha.dataset.sitekey = input.dataset.sitekey;
+	captcha.dataset.sitekey = input.dataset.key;
 
 	input.after(captcha);
 
