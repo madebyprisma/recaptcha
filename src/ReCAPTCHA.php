@@ -9,13 +9,21 @@ namespace AdairCreative {
 
 	class ReCAPTCHA {
 		use Configurable;
-
-		public static function addField(FieldList &$fieldList) {
+		
+		public static function field() {
 			$app = Config::inst()->get(ReCAPTCHA::class, "app_key");
 
 			if (!$app) throw "ReCAPTCHA app key has not been defined";
 
-			$fieldList->add(TextField::create("CaptchaToken", "")->setAttribute('required', 'true')->setAttribute("data-key", $app));
+			return TextField::create("CaptchaToken", "")->setAttribute('required', 'true')->setAttribute("data-key", $app);
+		}
+
+		/**
+		 * @depricated
+		 * Use `ReCAPTCHA::field()` instead
+		 */
+		public static function addField(FieldList &$fieldList) {
+			$fieldList->add(ReCAPTCHA::field());
 		}
 
 		public static function importJavascript() {
