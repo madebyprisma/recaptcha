@@ -1,20 +1,18 @@
-globalThis.captchaCallback = () => undefined;
-
-let form = Array.from(document.querySelectorAll("form")).filter(form => !!form.querySelector(`input[name="CaptchaToken"]`))[0];
-
-if (form) {
+Array.from(document.querySelectorAll("form")).forEach((form, index) => {
 	let input = form.querySelector(`input[name="CaptchaToken"]`);
 
-	let captcha = document.createElement("div");
-	captcha.className = "g-recaptcha";
-	captcha.dataset.callback = "captchaCallback";
-	captcha.dataset.sitekey = input.dataset.key;
+	if (input) {
+		let captcha = document.createElement("div");
+		captcha.className = "g-recaptcha";
+		captcha.dataset.callback = "captchaCallback_" + index;
+		captcha.dataset.sitekey = input.dataset.key;
 
-	input.after(captcha);
+		input.after(captcha);
 
-	globalThis.captchaCallback = token => input.value = token;
+		globalThis[`captchaCallback_${index}`] = token => input.value = token;
+	}
+});
 
-	let script = document.createElement("script");
-	script.src = "https://www.google.com/recaptcha/api.js";
-	document.body.appendChild(script);
-}
+let script = document.createElement("script");
+script.src = "https://www.google.com/recaptcha/api.js";
+document.body.appendChild(script);
