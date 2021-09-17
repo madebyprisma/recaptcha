@@ -6,10 +6,20 @@ namespace AdairCreative {
     use SilverStripe\Core\Config\Configurable;
     use SilverStripe\Core\Config\Config;
     use SilverStripe\View\Requirements;
+    use SilverStripe\VendorPlugin\Library;
 
 	class ReCAPTCHA {
 		use Configurable;
-		
+
+        public static function resourcesDir() {
+            if (!defined('RESOURCES_DIR')) {
+                return '/resources';
+            } else {
+                return RESOURCES_DIR;
+            }
+
+        }
+
 		public static function field() {
 			$app = Config::inst()->get(ReCAPTCHA::class, "app_key");
 
@@ -26,11 +36,11 @@ namespace AdairCreative {
 		}
 
 		public static function importJavascript() {
-			Requirements::javascript("/_resources/vendor/adair-creative/recaptcha/dist/ReCAPTCHA.js");
+			Requirements::javascript(self::resourcesDir() . "/vendor/adair-creative/recaptcha/dist/ReCAPTCHA.js");
 		}
 
 		public static function importCSS() {
-			Requirements::css("/_resources/vendor/adair-creative/recaptcha/dist/ReCAPTCHA.css");
+			Requirements::css(self::resourcesDir() . "/vendor/adair-creative/recaptcha/dist/ReCAPTCHA.css");
 		}
 
 		/**
